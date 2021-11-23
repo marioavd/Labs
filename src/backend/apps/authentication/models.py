@@ -34,11 +34,12 @@ class UserManager(BaseUserManager):
         return user
 
 class User(AbstractBaseUser, PermissionsMixin):
-    username= models.CharField(max_length= 255, unique = True, db_index=True)
-    email = models.EmailField(max_length=255, unique=True, db_index=True)
+    username= models.CharField(max_length= 25, unique = True, db_index=True)
+    email = models.EmailField(max_length=100, unique=True, db_index=True)
     is_verified = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    is_basic = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now_add=True)
     password = models.CharField(max_length= 25, db_index=True)
